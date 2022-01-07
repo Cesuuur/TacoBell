@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 // @SpringBootTest igual sabremos algo más adelante...
 @RunWith(SpringRunner.class)
-@WebMvcTest(HomeController.class)
+// @WebMvcTest(HomeController.class)
 class TacoBellApplicationTests {
 
 	@Autowired
