@@ -1,13 +1,22 @@
 package com.cesar.tacobell.Order;
 
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
+
+import com.cesar.tacobell.Taco;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 @Data
+@Entity
+@Table(name="Taco_Order")
 public class Order {
     @NotBlank(message="Name is required")
     private String name;
@@ -32,4 +41,25 @@ public class Order {
 
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     private String ccCVV;
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
+    @ManyToMany(targetEntity= Taco.class)
+    private List<Taco> tacos = new ArrayList<>();
+
+    private Date placedAt;
+
+    private static final long serialVersionUID = 1L;
+
+    public void addDesign(Taco design) {
+        this.tacos.add(design);
+    }
+
+    @PrePersist
+    void placedAt() {
+        this.placedAt = new Date();
+    }
+
 }
