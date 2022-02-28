@@ -43,7 +43,7 @@ public class Order {
     private String ccCVV;
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @ManyToMany(targetEntity= Taco.class)

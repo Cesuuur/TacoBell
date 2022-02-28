@@ -25,7 +25,8 @@ public class OrderController {
     private OrderRepository orderRepo;
 
     @Autowired
-    // Una instancia de OrderRepository es "inyectada" directamente por Spring
+    // Una instancia de OrderRepository es "inyectada" directamente por Spring,
+    // creo que también valdría directamente arriba
     public OrderController(OrderRepository orderRepo) {
         this.orderRepo = orderRepo;
     }
